@@ -2,6 +2,7 @@ const config = require('config')
 const axios = require('axios')
 
 class Challenge{
+    // Encuentra el error (average)
     average(a, b){
         return new Promise((resolve, reject) => {
             try {
@@ -16,6 +17,7 @@ class Challenge{
         })
     }
 
+    // String Manipulation
     deleteMark(s){
         return new Promise((resolve, reject) => {
             try {
@@ -34,6 +36,7 @@ class Challenge{
         })
     } 
 
+    // SumArray
     sumArray(arr){
         function allSameType(arr) {
             const isNumberArr = arr.map(val => typeof val !== "number")
@@ -71,6 +74,7 @@ class Challenge{
         })
     }
 
+    // TransformArray
     transformArray(matrix, order){
 
         function containsArrays(arr) {
@@ -102,7 +106,7 @@ class Challenge{
                     throw new TypeError('Matrix should only contain alfa numeric elements')
                 }
 
-                let response = [...matrix[0], ...matrix[1]].filter(val => typeof val === "number")
+                const response = [...matrix[0], ...matrix[1]].filter(val => typeof val === "number")
                 switch (order) {
                     case 'DESC':
                         return resolve(response.sort((a, b) => b - a))
@@ -118,6 +122,7 @@ class Challenge{
         })
     }
 
+    // MyCows
     myCows(N, produccionPorVaca){
         return new Promise((resolve, reject) => {
             try {
@@ -184,6 +189,7 @@ class Challenge{
         })
     }
 
+    // TrackingCoordinadora
     tracking(codigo){
         return new Promise(async (resolve, reject) => {
             try {
@@ -260,6 +266,7 @@ class Challenge{
         })
     }
 
+    // ArrayScore
     arrayScore(arr){
         return new Promise((resolve, reject) => {
             try {
