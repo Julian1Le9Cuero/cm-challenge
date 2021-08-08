@@ -1,6 +1,6 @@
 const express = require('express')
 const router = new express.Router()
-const Challenge = require('../utils')
+const Challenge = require('../utils/challengeResponse')
 const challenge = new Challenge()
 const {check, validationResult} = require('express-validator')
 
@@ -85,6 +85,52 @@ async (req, res) => {
     try {
         const result = await challenge.transformArray(matrix, order)
         return res.status(200).json({result})
+    } catch (error) {
+        console.error(error.message);
+        return res.status(500).json({error: error.message})
+    }
+})
+
+// @route POST /challenge/cows
+/* @desc Producción de leche diaria (en
+litros) de cada una de las vacas, durante una semana */
+router.post('/cows', async (req, res) => {
+    const {N, produccionPorVaca} = req.body
+    try {
+        const response = await challenge.myCows(N, produccionPorVaca)
+        return res.status(200).json({response})
+    } catch (error) {
+        console.error(error.message);
+        return res.status(500).json({error: error.message})
+    }
+})
+
+// @route GET /challenge/tracking/:codigo
+/* @desc Obtener por medio de una respuesta el tracking
+operativo referente a una guía en específico*/
+router.get('/tracking/:codigo', async (req, res) => {
+    const {codigo} = req.params
+    try {
+        const response = await challenge.tracking(codigo)
+        return res.status(200).json(response)
+    } catch (error) {
+        console.error(error.message);
+        if(error.message.includes('no encontrada')){
+            return res.status(404).json({error: error.message})
+        } else {
+            return res.status(500).json({error: error.message})
+        }
+    }
+})
+
+// @route GET /challenge/arrayscore/:arr
+// @desc  Retorna puntuación total basada en criterios
+router.get('/arrayscore/:arr', async (req, res) => {
+    const {arr} = req.params
+    try {
+        const result = await challenge.arrayScore(JSON.parse(arr))
+        return res.status(200).json({result})
+        
     } catch (error) {
         console.error(error.message);
         return res.status(500).json({error: error.message})

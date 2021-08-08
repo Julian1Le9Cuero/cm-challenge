@@ -1,0 +1,4 @@
+{
+    "apiGuias": "https://api.coordinadora.com/cm-model-testing/api/v1/talentos/",
+    "apiTracking": "https://api.coordinadora.com/cm-model-testing/api/v1/talentos/checkpoint"
+}
