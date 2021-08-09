@@ -38,5 +38,5 @@ La colección es similar a una tabla de SQL o de Excel, pues ellas permiten alma
 Lo entendí como una característica de seguridad o protección del navegador cuando los recursos de la API REST reciben solicitudes HTTP complejas desde varios orígenes.
 
 ## Explicación de ejercicios
-
+[https://youtu.be/j57lBNA3Mmk](https://youtu.be/j57lBNA3Mmk)
 
